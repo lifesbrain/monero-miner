@@ -17,6 +17,6 @@ RUN		cd cpuminer-multi && ./autogen.sh && ./configure CFLAGS="-O3" && make
 
 WORKDIR		/cpuminer-multi
 ENTRYPOINT	["./minerd", "-a", "cryptonight", \
-    "-o", "mine.moneropool.com:3333", \
+    "-o", "stratum+tcp://mine.moneropool.com:3333", \
     "-u", "$PAYOUT_ADDRESS", \
     "-p", "-x"]
