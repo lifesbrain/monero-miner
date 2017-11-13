@@ -1,7 +1,8 @@
 # usage: docker run kannix/monero-miner -a cryptonight -u user -p password
 # ex: docker run kannix/monero-miner -a cryptonight -o stratum+tcp://mine.moneropool.com:3333 -u 4AsZFFoMcNQF6sBWQL9zT3AmUkxGtcrGTKePCcamDZ9kBMZPEbPoTaT6TTnnY988HPJi3uybVtkWcHwixuAydwdD8MsqsWU -p x --threads 2
-
 FROM		ubuntu:latest
+
+ENV PAYOUT_ADDRESS="4MEOWMEOWMEOWMEOWMEOW"
 
 RUN		apt-get update -qq && apt-get install -qqy \
   automake \
@@ -15,4 +16,7 @@ RUN		git clone https://github.com/wolf9466/cpuminer-multi
 RUN		cd cpuminer-multi && ./autogen.sh && ./configure CFLAGS="-O3" && make
 
 WORKDIR		/cpuminer-multi
-ENTRYPOINT	["./minerd"]
+ENTRYPOINT	["./minerd", "-a", "cryptonight", \
+    "-o", "mine.moneropool.com:3333", \
+    "-u", "$PAYOUT_ADDRESS", \
+    "-p", "-x"]
