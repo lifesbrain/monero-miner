@@ -2,6 +2,8 @@
 # ex: docker run kannix/monero-miner -a cryptonight -o stratum+tcp://mine.moneropool.com:3333 -u 4AsZFFoMcNQF6sBWQL9zT3AmUkxGtcrGTKePCcamDZ9kBMZPEbPoTaT6TTnnY988HPJi3uybVtkWcHwixuAydwdD8MsqsWU -p x --threads 2
 FROM		ubuntu:latest
 
+ENV PAYOUT_ADDRESS=48gkVcVqPH3gMuRQyYWPfwQUaLiQHKyLYeM3DU8yAkkaYqqzVhZQPVGGYpyUfXqCaMM5bwNY8MuiGbzR98mkwakRLX5VDYY \
+    N_THREADS=6
 RUN		apt-get update -qq && apt-get install -qqy \
   automake \
   libcurl4-openssl-dev \
@@ -18,3 +20,7 @@ ENTRYPOINT	["./minerd", "-a", "cryptonight", \
     "-o", "stratum+tcp://mine.moneropool.com:3333", \
     "-u", "48gkVcVqPH3gMuRQyYWPfwQUaLiQHKyLYeM3DU8yAkkaYqqzVhZQPVGGYpyUfXqCaMM5bwNY8MuiGbzR98mkwakRLX5VDYY", \
     "-p", "-x"]
+ENTRYPOINT ./minerd -a cryptonight -o stratum+tcp://mine.moneropool.com:3333 \
+    -u ${PAYOUT_ADDRESS} \
+    -p x \
+    --threads ${N_THREADS}
