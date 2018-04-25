@@ -17,4 +17,4 @@ RUN wget https://github.com/xmrig/xmrig/releases/download/v${XMRIG_VERSION}/xmri
   echo "${XMRIG_SHA256}  xmrig" | sha256sum -c -
 
 ENTRYPOINT ["./xmrig"]
-CMD ["--url=mine.moneropool.com:7777", "--user=${PAYOUT_ADDRESS}", "--pass=worker", "-k", "-t=${N_THREADS}"]
+CMD ["--url=mine.moneropool.com:7777", "--user=${PAYOUT_ADDRESS}", "--pass=x", "--keepalive", "--threads=${N_THREADS}"]
