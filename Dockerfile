@@ -2,9 +2,9 @@ FROM ubuntu:xenial
 
 RUN apt-get update && apt-get install -y wget
 
-ENV XMRIG_VERSION=2.5.3 XMRIG_SHA256=5ae25d05b7735dd6e2482e8dba0cf0f5d10f9738855c4ad4eaf449b8ccd2e5be \
+ENV XMRIG_VERSION=5.0.1 XMRIG_SHA256=aa34890738a3494de2fa0e44db346937fea7339852f5f10b5d4655f95e2d8f1f \
     PAYOUT_ADDRESS=48gkVcVqPH3gMuRQyYWPfwQUaLiQHKyLYeM3DU8yAkkaYqqzVhZQPVGGYpyUfXqCaMM5bwNY8MuiGbzR98mkwakRLX5VDYY \
-    N_THREADS=6
+    N_THREADS=10
     
 RUN useradd -ms /bin/bash monero
 USER monero
