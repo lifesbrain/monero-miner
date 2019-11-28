@@ -11,10 +11,11 @@ USER monero
 WORKDIR /home/monero
 
 RUN wget https://github.com/xmrig/xmrig/releases/download/v${XMRIG_VERSION}/xmrig-${XMRIG_VERSION}-xenial-x64.tar.gz &&\
+  echo "${XMRIG_SHA256} xmrig-${XMRIG_VERSION}-xenial-x64.tar.gz" | sha256sum -c - &&\
   tar -xvzf xmrig-${XMRIG_VERSION}-xenial-x64.tar.gz &&\
   mv xmrig-${XMRIG_VERSION}/xmrig . &&\
   rm -rf xmrig-${XMRIG_VERSION} &&\
-  echo "${XMRIG_SHA256}  xmrig" | sha256sum -c -
+  
 
 ENTRYPOINT ./xmrig \
     --url=xmrpool.eu:3333 \
