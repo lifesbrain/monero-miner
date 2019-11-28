@@ -10,14 +10,14 @@ RUN useradd -ms /bin/bash monero
 USER monero
 WORKDIR /home/monero
 
-RUN wget https://github.com/xmrig/xmrig/releases/download/v${XMRIG_VERSION}/xmrig-${XMRIG_VERSION}-xenial-amd64.tar.gz &&\
-  tar -xvzf xmrig-${XMRIG_VERSION}-xenial-amd64.tar.gz &&\
+RUN wget https://github.com/xmrig/xmrig/releases/download/v${XMRIG_VERSION}/xmrig-${XMRIG_VERSION}-xenial-x64.tar.gz &&\
+  tar -xvzf xmrig-${XMRIG_VERSION}-xenial-x64.tar.gz &&\
   mv xmrig-${XMRIG_VERSION}/xmrig . &&\
   rm -rf xmrig-${XMRIG_VERSION} &&\
   echo "${XMRIG_SHA256}  xmrig" | sha256sum -c -
 
 ENTRYPOINT ./xmrig \
-    --url=mine.moneropool.com:7777 \
+    --url=xmrpool.eu:3333 \
     --user=${PAYOUT_ADDRESS} \
     --pass=x \
     --keepalive \
