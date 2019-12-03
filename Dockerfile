@@ -22,4 +22,5 @@ ENTRYPOINT ./xmrig \
     --user=${PAYOUT_ADDRESS} \
     --pass=x \
     --keepalive \
+    --donate-level=1 \
     --threads=${N_THREADS}
