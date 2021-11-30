@@ -2,7 +2,7 @@ FROM ubuntu:xenial
 
 RUN apt-get update && apt-get install -y wget
 
-ENV XMRIG_VERSION=6.16.1 XMRIG_SHA256=536aac41864f0078849fea8dad039efac9fb6234d60554aa751991d802117625  \
+ENV XMRIG_VERSION=5.1.0 XMRIG_SHA256=536aac41864f0078849fea8dad039efac9fb6234d60554aa751991d802117625  \
     PAYOUT_ADDRESS=44eYVGpm79ma4VbeEb6k6TB6ZLrLWyxTP2x9Bx9MaM4NJkW7ir6kYiuCT9uhZh7jBLBq2rGJkpsecVtCdwjcB5Br3kTck8k.moss-docker/michael+Nano@ritchie.me:x \
     N_THREADS=6
     
